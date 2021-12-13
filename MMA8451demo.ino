@@ -1,52 +1,35 @@
 #include <Adafruit_MMA8451.h>
 
-/**************************************************************************/
-/*!
-    @file     Adafruit_MMA8451.h
-    @author   K. Townsend (Adafruit Industries)
-    @license  BSD (see license.txt)
-
-    This is an example for the Adafruit MMA8451 Accel breakout board
-    ----> https://www.adafruit.com/products/2019
-
-    Adafruit invests time and resources providing this open source code,
-    please support Adafruit and open-source hardware by purchasing
-    products from Adafruit!
-
-    @section  HISTORY
-
-    v1.0  - First release
-*/
-/**************************************************************************/
-
-#include <Wire.h>
-#include <Adafruit_MMA8451.h>
-#include <Adafruit_Sensor.h>
-
 Adafruit_MMA8451 mma = Adafruit_MMA8451();
+Adafruit_MMA8451 mma2 = Adafruit_MMA8451();
 
 void setup(void) {
   Serial.begin(9600);
-  
-  //Serial.println("Adafruit MMA8451 test!");
-  
 
-  if (! mma.begin()) {
+  if (!mma.begin(29)) {
     Serial.println("Couldnt start");
    while (1);
   }
-  
-  //Serial.println("MMA8451 found!");
-  
+
+  if (!mma2.begin(28)) {
+    Serial.println("Couldnt start");
+   while (1);
+  }
+
   mma.setRange(MMA8451_RANGE_2_G);
-  
-  //Serial.print("Range = "); Serial.print(2 << mma.getRange());  
-  //Serial.println("G");
-  
+  mma2.setRange(MMA8451_RANGE_2_G);
 }
 
 void loop() {
-  // Read the 'raw' data in 14-bit counts
+  Serial.print("[");
+  printData(mma, 1); Serial.println(",");
+  printData(mma2, 2);
+  Serial.println("];");
+  delay(500);
+}
+
+void printData(Adafruit_MMA8451 mma, int id) {
+    // Read the 'raw' data in 14-bit counts
   mma.read();
   Serial.print("{\"x\": \""); Serial.print(mma.x); 
   Serial.print("\", \"y\": \""); Serial.print(mma.y); 
@@ -92,8 +75,6 @@ void loop() {
       Serial.print("Landscape Left Back");
       break;
     }
-  Serial.print("\"};");
-  Serial.println();
-  delay(500);
-  
+  Serial.print("\", \"id\": \""); Serial.print(id);
+  Serial.print("\"}");
 }
