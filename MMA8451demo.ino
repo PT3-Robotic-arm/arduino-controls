@@ -7,12 +7,12 @@ void setup(void) {
   Serial.begin(9600);
 
   if (!mma.begin(29)) {
-    Serial.println("Couldnt start");
+    Serial.println("Couldnt start first sensor");
    while (1);
   }
 
   if (!mma2.begin(28)) {
-    Serial.println("Couldnt start");
+    Serial.println("Couldnt start second sensor");
    while (1);
   }
 
@@ -25,7 +25,7 @@ void loop() {
   printData(mma, 1); Serial.println(",");
   printData(mma2, 2);
   Serial.println("];");
-  delay(500);
+  delay(50);
 }
 
 void printData(Adafruit_MMA8451 mma, int id) {
