@@ -32,7 +32,7 @@ Instructions :
 - Plug a normal cable in the arduino's **GND** pin (male) and in **one** sensor's **A** pin (female).
 
 # Inject the program 
-
+- Type this command : <tt>sudo chmod a+rw /dev/ttyACM0</tt>
 - Download the [arduino IDE](https://www.arduino.cc/en/software).
 - Plug the arduino Uno Rev 3 to your computer. 
 - Open the **.ino** file with the ide and inject the code. 
