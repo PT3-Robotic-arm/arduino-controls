@@ -26,8 +26,8 @@ Pins of an arduino :
 Instructions : 
 
 - Plug a weld cable in the arduino's **5V** pin (male) and in the sensors' **VIN** pins (female). 
-- Plug a weld cable in the arduino's **SCL** pin (male) and in the sensors' **SCL** pins (female).
-- Plug a weld cable in the arduino's **SDA** pin (male) and in the sensors' **SDA** pins (female).
+- Plug a weld cable in the arduino's **SCL**(D19) pin (male) and in the sensors' **SCL** pins (female).
+- Plug a weld cable in the arduino's **SDA**(D18) pin (male) and in the sensors' **SDA** pins (female).
 - Plug a normal cable in the arduino's **GND** pin (male) and in **one** sensor's **GND** pin (female).
 - Plug a normal cable in the arduino's **GND** pin (male) and in **one** sensor's **A** pin (female).
 
