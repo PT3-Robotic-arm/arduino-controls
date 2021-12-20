@@ -25,7 +25,7 @@ void loop() {
   printData(mma, 1); Serial.println(",");
   printData(mma2, 2);
   Serial.println("];");
-  delay(50);
+  delay(10);
 }
 
 void printData(Adafruit_MMA8451 mma, int id) {
